@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  final String name;
+  // ignore: sort_constructors_first
+  const HomePage({Key? key, required this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    var age = 22;
-    var name = ' Jhon Doe';
+    const int age = 22;
 
     return Scaffold(
       appBar: AppBar(
