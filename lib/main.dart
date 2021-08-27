@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/loginpage.dart';
 import 'package:flutter_application_1/Pages/homepage.dart';
+import 'package:flutter_application_1/utilities/MyRoutes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  // ignore: prefer_const_constructors
   runApp(myApp());
 }
 
@@ -14,6 +16,7 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       //home: Home_Page(),
+      debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.light,
       theme: ThemeData(
           primarySwatch: Colors.deepPurple,
@@ -22,11 +25,9 @@ class myApp extends StatelessWidget {
       darkTheme:
           ThemeData(brightness: Brightness.dark, primaryColor: Colors.cyan),
       routes: {
-        // ignore: prefer_const_constructors
-        // ignore: always_specify_types
         '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
-        '/login': (context) => LoginPage()
+        MyRoutes.homeRoute: (context) => HomePage(),
+        MyRoutes.loginRoute: (context) => LoginPage()
       },
     );
   }
