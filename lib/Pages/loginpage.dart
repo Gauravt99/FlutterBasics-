@@ -43,21 +43,23 @@ class LoginPage extends StatelessWidget {
                 TextFormField(
                   // ignore: prefer_const_constructors
                   decoration: InputDecoration(
-                      labelText: 'User Name', hintText: 'Enter username : '),
+                      labelText: 'User Name', hintText: 'Enter username   '),
                 ),
                 TextFormField(
                   // ignore: prefer_const_constructors
                   obscureText: true,
+                  // ignore: prefer_const_constructors
                   decoration: InputDecoration(
-                      labelText: 'Password', hintText: 'Enter password : '),
+                      labelText: 'Password', hintText: 'Enter password   '),
                 ),
+                // ignore: prefer_const_constructors
                 SizedBox(
                   height: 35,
                 ),
                 ElevatedButton(
                   child: Text('login'),
                   onPressed: () {
-                    print("hello");
+                    print(' hello  ');
                   },
                 )
               ],
