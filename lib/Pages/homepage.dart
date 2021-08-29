@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/drawer.dart';
 
 class HomePage extends StatelessWidget {
   final String name;
@@ -10,12 +11,27 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         // ignore: prefer_const_constructors
-        title: Text('Home Page'),
+        title: Text(
+          'Catlog App',
+          // ignore: prefer_const_constructors
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Center(
         child: Text('hello my name is $name & my age is $age'),
       ),
+      floatingActionButton: FloatingActionButton(
+          elevation: 8.0,
+          child: Icon(Icons.add),
+          onPressed: () {
+            print('I am Floating Action Button');
+          }),
+      // ignore: prefer_const_constructors
+      drawer: MyDrawer(),
     );
   }
 }

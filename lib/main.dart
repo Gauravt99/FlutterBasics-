@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Pages/homepage.dart';
 import 'package:flutter_application_1/Pages/loginpage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  // ignore: prefer_const_constructors
   runApp(MyApp());
 }
 
@@ -23,7 +23,19 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primaryColor: Colors.cyan,
       ),
-      home: const LoginPage(),
+      //initialRoute: HomePage(),
+      // home: const HomePage(
+      //   name: '',
+      // ),
+      routes: {
+        '/': (context) => HomePage(
+              name: '',
+            ),
+        '/home': (context) => HomePage(
+              name: '',
+            ),
+        '/login': (context) => LoginPage()
+      },
     );
   }
 }
