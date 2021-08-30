@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         // ignore: prefer_const_constructors
         title: Text(
-          'Catlog App',
+          'Catalog App',
           // ignore: prefer_const_constructors
           style: TextStyle(
             color: Colors.white,
