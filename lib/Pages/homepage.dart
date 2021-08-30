@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/catalog.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
+import 'package:flutter_application_1/widgets/itemlist.dart';
 
 class HomePage extends StatelessWidget {
   final String name;
@@ -21,8 +23,14 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Text('hello my name is $name & my age is $age'),
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: ListView.builder(
+          itemCount: Models.products.length,
+          itemBuilder: (context, index) {
+            return ItemWidget(item: Models.products[index]);
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           elevation: 8.0,
