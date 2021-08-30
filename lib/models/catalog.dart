@@ -1,10 +1,10 @@
 class Item {
-  final int id;
-  final String name;
-  final String desc;
-  final num price;
-  final String color;
-  final String image;
+  final dynamic id;
+  final dynamic name;
+  final dynamic desc;
+  final dynamic price;
+  final dynamic color;
+  final dynamic image;
 
   // ignore: sort_constructors_first
   Item(
@@ -14,6 +14,30 @@ class Item {
       required this.price,
       required this.color,
       required this.image});
+
+  // mapping for json file (fields)
+
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      id: map['id'],
+      name: map['name'],
+      desc: map['desc'],
+      price: map['price'],
+      color: map['color'],
+      image: map['image'],
+    );
+  }
+
+  // ignore: always_declare_return_types
+  // ignore: always_specify_types
+  dynamic toMap() => {
+        'id': id,
+        'name': name,
+        'desc': desc,
+        'price': price,
+        'color': color,
+        'image': image
+      };
 }
 
 // ignore: avoid_classes_with_only_static_members
