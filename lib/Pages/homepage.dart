@@ -18,14 +18,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadData();
   }
 
   dynamic loadData() async {
     // to load json file
-    // ignore: prefer_final_locals
+    // ignore: always_specify_types
     var catalogjson = await rootBundle.loadString('assets/Data/catalog.json');
     // ignore: prefer_final_locals
     dynamic decodedData = jsonDecode(catalogjson);
@@ -34,7 +33,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
- 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -52,6 +50,7 @@ class _HomePageState extends State<HomePage> {
         padding: EdgeInsets.all(20),
         child: ListView.builder(
           itemCount: Models.products.length,
+          // ignore: always_specify_types
           itemBuilder: (context, index) {
             return ItemWidget(item: Models.products[index]);
           },
@@ -59,6 +58,7 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
           elevation: 8.0,
+          // ignore: prefer_const_constructors
           child: Icon(Icons.add),
           onPressed: () {
             print('I am Floating Action Button');

@@ -7,16 +7,16 @@ class Item {
   final dynamic image;
 
   // ignore: sort_constructors_first
-  Item(
-      {required this.id,
-      required this.name,
-      required this.desc,
-      required this.price,
-      required this.color,
-      required this.image});
+  Item({this.id, this.name, this.desc, this.price, this.color, this.image});
 
-  // mapping for json file (fields)
+  Map<String, dynamic> toMap(Item item) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = item.id;
+    data['name '] = item.name;
+    return data;
+  }
 
+  // ignore: sort_constructors_first
   factory Item.fromMap(Map<String, dynamic> map) {
     return Item(
       id: map['id'],
@@ -27,17 +27,6 @@ class Item {
       image: map['image'],
     );
   }
-
-  // ignore: always_declare_return_types
-  // ignore: always_specify_types
-  dynamic toMap() => {
-        'id': id,
-        'name': name,
-        'desc': desc,
-        'price': price,
-        'color': color,
-        'image': image
-      };
 }
 
 // ignore: avoid_classes_with_only_static_members

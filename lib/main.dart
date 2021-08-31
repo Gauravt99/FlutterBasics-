@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Pages/homepage.dart';
 import 'package:flutter_application_1/Pages/loginpage.dart';
 import 'package:flutter_application_1/widgets/themes.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,12 +30,15 @@ class MyApp extends StatelessWidget {
       //   name: '',
       // ),
       routes: {
+        // ignore: prefer_const_constructors
         '/': (context) => HomePage(
               name: '',
             ),
+        // ignore: prefer_const_constructors
         '/home': (context) => HomePage(
               name: '',
             ),
+        // ignore: prefer_const_constructors
         '/login': (context) => LoginPage()
       },
     );
