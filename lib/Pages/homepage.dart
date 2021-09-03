@@ -7,10 +7,7 @@ import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/itemlist.dart';
 
 class HomePage extends StatefulWidget {
-  final String name;
-  // ignore: sort_constructors_first
-  const HomePage({Key? key, required this.name}) : super(key: key);
-
+  const HomePage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -22,13 +19,18 @@ class _HomePageState extends State<HomePage> {
     loadData();
   }
 
-  dynamic loadData() async {
-    // to load json file
+  // ignore: avoid_void_async
+  void loadData() async {
+    await Future.delayed(Duration(seconds: 2));
+    final String catalogJson = await rootBundle.loadString('assets/Data/catalog.json');
+
+    final dynamic decodedData = jsonDecode(catalogJson);
+
+    final Iterable<dynamic> productData = decodedData['products'] as Iterable<dynamic>;
+
     // ignore: always_specify_types
-    var catalogjson = await rootBundle.loadString('assets/Data/catalog.json');
-    // ignore: prefer_final_locals
-    dynamic decodedData = jsonDecode(catalogjson);
-    print(decodedData);
+    CatalogModel.items = List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
   }
 
   @override
@@ -36,30 +38,30 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        // ignore: prefer_const_constructors
-        title: Text(
+        title: const Text(
           'Catalog App',
-          // ignore: prefer_const_constructors
           style: TextStyle(
             color: Colors.white,
           ),
         ),
       ),
       body: Padding(
-        // ignore: prefer_const_constructors
-        padding: EdgeInsets.all(20),
-        child: ListView.builder(
-          itemCount: Models.products.length,
-          // ignore: always_specify_types
-          itemBuilder: (context, index) {
-            return ItemWidget(item: Models.products[index]);
-          },
-        ),
+        padding: const EdgeInsets.all(20),
+        // here we check catalogModel has elements or not
+        child: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+            ? ListView.builder(
+                itemCount: CatalogModel.items.length,
+                itemBuilder: (context, index) => ItemWidget(
+                  item: CatalogModel.items[index],
+                ),
+              )
+            : const Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       floatingActionButton: FloatingActionButton(
           elevation: 8.0,
-          // ignore: prefer_const_constructors
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () {
             print('I am Floating Action Button');
           }),

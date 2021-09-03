@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
       await Navigator.push<void>(
         context,
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => HomePage(name: name),
+          builder: (BuildContext context) => const HomePage(),
         ),
       );
       setState(() {
@@ -48,36 +48,27 @@ class _LoginPageState extends State<LoginPage> {
                 'assets/images/loginimg.png',
                 fit: BoxFit.cover,
               ),
-
-              // ignore: prefer_const_constructors
-              SizedBox(
+              const SizedBox(
                 height: 40,
                 width: 200,
-                // ignore: prefer_const_constructors
-                child: Text('Hello Users'),
+                // ignore: unnecessary_const
+                child: const Text('Hello Users'),
               ),
-
-              // ignore: prefer_const_constructors
               Text(
                 'Welcome  $name',
-                // ignore: prefer_const_constructors
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-
-              // ignore: prefer_const_constructors
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 35),
+                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 35),
                 child: Column(
                   // ignore: always_specify_types
                   children: [
                     TextFormField(
                       controller: nameController,
-                      // ignore: prefer_const_constructors
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: 'Enter username',
                         labelText: 'Username',
                       ),
@@ -88,20 +79,15 @@ class _LoginPageState extends State<LoginPage> {
 
                         return null;
                       },
-
                       onChanged: (String value) {
                         name = value;
                         setState(() {});
                       },
                     ),
-
                     TextFormField(
                         controller: passwordController,
                         obscureText: true,
-                        // ignore: prefer_const_constructors
-                        decoration: InputDecoration(
-                            labelText: 'Password',
-                            hintText: 'Enter password  '),
+                        decoration: const InputDecoration(labelText: 'Password', hintText: 'Enter password  '),
                         validator: (String? value) {
                           if (value!.isEmpty) {
                             return "password cann't be empty";
@@ -111,41 +97,34 @@ class _LoginPageState extends State<LoginPage> {
 
                           return null;
                         }),
-
-                    // ignore: prefer_const_constructors
-                    SizedBox(
+                    const SizedBox(
                       height: 55,
                     ),
-
                     Material(
                       child: InkWell(
                         splashColor: Colors.red,
                         onTap: () => movetoHome(context, nameController.text),
                         child: AnimatedContainer(
                           height: 50,
-                          // ignore: prefer_const_constructors
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           width: changeButton ? 50 : 130,
                           child: changeButton
-                              // ignore: prefer_const_constructors
-                              ? Icon(
+                              ? const Icon(
                                   Icons.done,
                                   color: Colors.white,
                                 )
-                              // ignore: prefer_const_constructors
-                              : Text(
+                              : const Text(
                                   'Login',
+                                  // ignore: unnecessary_const
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                   ),
                                 ),
                           alignment: Alignment.center,
-                          // ignore: prefer_const_constructors
                           decoration: BoxDecoration(
                             color: Colors.deepPurple,
-                            borderRadius:
-                                BorderRadius.circular(changeButton ? 26 : 8),
+                            borderRadius: BorderRadius.circular(changeButton ? 26 : 8),
                           ),
                         ),
                       ),
